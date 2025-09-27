@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "ONNX Minimal Test",
+  "version": "0.0.1",
+  "description": "Minimal extension to test onnxruntime-web (WASM) in popup + background",
+  "permissions": ["activeTab", "offscreen"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "ONNX Minimal" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["model.onnx", "*.wasm", "*.mjs", "ort.wasm.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
